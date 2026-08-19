@@ -16,6 +16,7 @@ import { Phone, MessageCircle } from 'lucide-react';
 const SOCIAL_LINKS = {
   facebook: 'http://facebook.com/CareerinNgl',
   instagram: 'https://www.instagram.com/careerin_ngl?igsh=ZjN6eWwwc2hudHNx',
+  linkedin: 'https://www.linkedin.com/company/ckssolutions/posts/',
 };
 
 function App() {
@@ -206,6 +207,32 @@ function App() {
             className="floating-btn"
           >
             <span aria-hidden="true">◎</span>
+          </a>
+
+          <a
+            href={SOCIAL_LINKS.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            title="Visit CareerIn on LinkedIn"
+            aria-label="Visit CareerIn on LinkedIn"
+            style={{
+              width: '46px',
+              height: '46px',
+              borderRadius: '50%',
+              background: '#0a66c2',
+              color: 'white',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 8px 20px rgba(10, 102, 194, 0.35)',
+              transition: 'transform 0.2s ease',
+              fontSize: '1.25rem',
+              fontWeight: 800,
+              fontFamily: 'Arial, sans-serif'
+            }}
+            className="floating-btn"
+          >
+            <span aria-hidden="true">in</span>
           </a>
 
         <a
