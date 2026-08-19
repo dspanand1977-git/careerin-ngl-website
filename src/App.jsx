@@ -14,7 +14,7 @@ import Footer from './components/Footer';
 import { Phone, MessageCircle } from 'lucide-react';
 
 const SOCIAL_LINKS = {
-  facebook: 'https://www.facebook.com/careerin.nagercoil',
+  facebook: 'http://facebook.com/CareerinNgl',
   instagram: 'https://www.instagram.com/careerin_ngl?igsh=ZjN6eWwwc2hudHNx',
 };
 
