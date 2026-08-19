@@ -13,6 +13,11 @@ import EnrollmentModal from './components/EnrollmentModal';
 import Footer from './components/Footer';
 import { Phone, MessageCircle } from 'lucide-react';
 
+const SOCIAL_LINKS = {
+  facebook: 'https://www.facebook.com/careerin.nagercoil',
+  instagram: 'https://www.instagram.com/careerin_ngl?igsh=ZjN6eWwwc2hudHNx',
+};
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -118,7 +123,7 @@ function App() {
         initialSubject={enrollSubject}
       />
 
-      {/* Floating Action WhatsApp & Phone Buttons */}
+      {/* Floating Action Social & Phone Buttons */}
       <div style={{
         position: 'fixed',
         bottom: '1.5rem',
@@ -150,6 +155,58 @@ function App() {
         >
           <MessageCircle size={28} />
         </a>
+
+          <a
+            href={SOCIAL_LINKS.facebook}
+            target="_blank"
+            rel="noreferrer"
+            title="Visit CareerIn on Facebook"
+            aria-label="Visit CareerIn on Facebook"
+            style={{
+              width: '46px',
+              height: '46px',
+              borderRadius: '50%',
+              background: '#1877f2',
+              color: 'white',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 8px 20px rgba(24, 119, 242, 0.35)',
+              transition: 'transform 0.2s ease',
+              fontSize: '1.7rem',
+              fontWeight: 800,
+              fontFamily: 'Arial, sans-serif'
+            }}
+            className="floating-btn"
+          >
+            <span aria-hidden="true">f</span>
+          </a>
+
+          <a
+            href={SOCIAL_LINKS.instagram}
+            target="_blank"
+            rel="noreferrer"
+            title="Visit CareerIn on Instagram"
+            aria-label="Visit CareerIn on Instagram"
+            style={{
+              width: '46px',
+              height: '46px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #833ab4, #fd1d1d 55%, #fcb045)',
+              color: 'white',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 8px 20px rgba(225, 48, 108, 0.35)',
+              transition: 'transform 0.2s ease',
+              fontSize: '1.6rem',
+              fontWeight: 700,
+              fontFamily: 'Arial, sans-serif'
+            }}
+            className="floating-btn"
+          >
+            <span aria-hidden="true">◎</span>
+          </a>
 
         <a
           href="tel:+919498029898"
