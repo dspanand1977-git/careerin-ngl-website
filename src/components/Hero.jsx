@@ -6,6 +6,20 @@ import {
 } from 'lucide-react';
 import { statsData } from '../data/placementsData';
 
+const localVideoFiles = import.meta.glob('../videos/*.mp4', {
+  eager: true,
+  import: 'default',
+});
+
+const findLocalVideo = (keywords) => {
+  const match = Object.entries(localVideoFiles).find(([path]) => {
+    const filename = path.toLowerCase();
+    return keywords.some((keyword) => filename.includes(keyword));
+  });
+
+  return match?.[1] || Object.values(localVideoFiles)[0];
+};
+
 const BACKGROUND_VIDEOS = [
   {
     id: 'coding',
@@ -13,7 +27,7 @@ const BACKGROUND_VIDEOS = [
     shortTitle: 'Coding Lab',
     category: 'Practical Software Training',
     icon: Code,
-    url: 'https://cdn.pixabay.com/video/2021/04/12/70884-536480980_large.mp4',
+    url: findLocalVideo(['building_websites', 'full_stack', 'tech_animation']),
     poster: '',
     description: 'Real-time coding labs for Java, Python, React, Node.js and modern full-stack development.'
   },
@@ -23,7 +37,7 @@ const BACKGROUND_VIDEOS = [
     shortTitle: 'AI & Data',
     category: 'Future Tech Skills',
     icon: Cpu,
-    url: 'https://cdn.pixabay.com/video/2019/04/23/23011-332483108_large.mp4',
+    url: findLocalVideo(['ai_developer', 'ai-powered', 'career_in-ai']),
     poster: '',
     description: 'Explore AI, machine learning, analytics and cloud-based innovation with guided mentorship.'
   },
@@ -33,7 +47,7 @@ const BACKGROUND_VIDEOS = [
     shortTitle: 'Campus',
     category: 'Mentorship & Learning',
     icon: GraduationCap,
-    url: 'https://cdn.pixabay.com/video/2020/05/25/40149-424074251_large.mp4',
+    url: findLocalVideo(['internship_career', 'initial_scene', 'promotional']),
     poster: '',
     description: 'A focused learning environment with personal guidance, project support and industry-ready coaching.'
   },
@@ -43,7 +57,7 @@ const BACKGROUND_VIDEOS = [
     shortTitle: 'Testing',
     category: 'Quality & Security',
     icon: Monitor,
-    url: 'https://cdn.pixabay.com/video/2016/09/21/5360-183787541_large.mp4',
+    url: findLocalVideo(['testing', 'tech_animation', 'ai-powered']),
     poster: '',
     description: 'Build confidence in automation testing, software quality, and security fundamentals for real jobs.'
   }
@@ -59,6 +73,23 @@ const Hero = ({ onOpenEnroll }) => {
   const videoRef = useRef(null);
 
   const currentVideo = BACKGROUND_VIDEOS[activeVideoIdx];
+
+  useEffect(() => {
+    if (!videoRef.current || !isVideoVisible) {
+      return;
+    }
+
+    const playVideo = async () => {
+      try {
+        await videoRef.current.play();
+      } catch (error) {
+        setIsPlaying(false);
+        console.warn('Background video could not autoplay:', error);
+      }
+    };
+
+    playVideo();
+  }, [activeVideoIdx, isVideoVisible]);
 
   // Handle play/pause toggle
   const togglePlay = () => {
@@ -84,10 +115,6 @@ const Hero = ({ onOpenEnroll }) => {
   const handleSelectVideo = (idx) => {
     setActiveVideoIdx(idx);
     setIsPlaying(true);
-    if (videoRef.current) {
-      videoRef.current.load();
-      videoRef.current.play().catch(err => console.log('Video play error:', err));
-    }
   };
 
   return (
@@ -117,6 +144,9 @@ const Hero = ({ onOpenEnroll }) => {
             playsInline
             preload="auto"
             poster={currentVideo.poster || undefined}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            onError={() => setIsPlaying(false)}
             style={{
               width: '100%',
               height: '100%',

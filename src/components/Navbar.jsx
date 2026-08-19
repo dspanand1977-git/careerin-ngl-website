@@ -67,7 +67,7 @@ const Navbar = ({ darkMode, setDarkMode, onOpenEnroll }) => {
           
           {/* Logo */}
           <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', textDecoration: 'none' }}>
-            <div style={{
+            {/* <div style={{
               width: '42px',
               height: '42px',
               borderRadius: '12px',
@@ -80,10 +80,10 @@ const Navbar = ({ darkMode, setDarkMode, onOpenEnroll }) => {
               flexShrink: 0
             }}>
               <GraduationCap size={24} />
-            </div>
+            </div> */}
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1, margin: 0 }}>
               <span style={{
-                fontSize: '1.45rem',
+                fontSize: '2rem',
                 fontWeight: 900,
                 letterSpacing: '-0.06em',
                 fontFamily: 'var(--font-heading)',
@@ -101,12 +101,11 @@ const Navbar = ({ darkMode, setDarkMode, onOpenEnroll }) => {
                 marginTop: '3px',
                 color: darkMode ? '#cbd5e1' : '#475569',
                 letterSpacing: '0.08em',
-                textTransform: 'uppercase'
+                textTransform: 'uppercase',
+                marginLeft: '3px'
               }}>
-                Software Training Institute
-                <span style={{ display: 'block', marginTop: '1px', letterSpacing: '0.06em' }}>
                   A Part of CKS Solutions
-                </span>
+
               </span>
             </div>
           </a>
