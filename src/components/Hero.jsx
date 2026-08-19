@@ -348,7 +348,7 @@ const Hero = ({ onOpenEnroll }) => {
             </p>
 
             {/* Highlights Checklist Grid */}
-            <div style={{
+            <div className="hero-highlights" style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '0.75rem 1.5rem',
@@ -377,7 +377,7 @@ const Hero = ({ onOpenEnroll }) => {
             </div>
 
             {/* Action Buttons */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <div className="hero-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <button
                 onClick={() => onOpenEnroll()}
                 className="btn btn-primary"
